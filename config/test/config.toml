@@ -1,0 +1,262 @@
+AppName = "digital"
+
+[Server]
+Address           = ":60066"
+Concurrence       = 2000
+ResolverType      = "consul"
+ServerName        = "digital"
+ResolverAddresses = ["192.168.0.194:8510"]
+Tags              = ["http"]
+
+[Logger]
+LogFile   = "/opt/log/digital.log"
+LogLevel  = "debug"
+IsConsole = false
+LogType   = "roll"
+LogMaxNum = 10
+LogSize   = 1
+LogUnit   = "GB"
+
+[Db]
+Driver       = "mysql"
+Username     = "root"
+Password     = "example"
+Protocol     = "tcp"
+Address      = "192.168.0.213"
+Port         = "3306"
+Dbname       = "digital"
+Params       = "?charset=utf8mb4&sql_notes=false&timeout=90s&collation=utf8mb4_general_ci&parseTime=True&loc=Local"
+MaxIdleConns = 100
+MaxOpenConns = 1000
+KeepAlive    = 3600
+# CacheType                     = "redis"
+CacheMaxSize = 99999999
+CacheTimeout = 86400
+
+[Statistics]
+Driver       = "mysql"
+Username     = "root"
+Password     = "example"
+Protocol     = "tcp"
+Address      = "192.168.0.213"
+Port         = "3306"
+Dbname       = "statistics"
+Params       = "?charset=utf8mb4&sql_notes=false&timeout=90s&collation=utf8mb4_general_ci&parseTime=True&loc=Local"
+MaxIdleConns = 100
+MaxOpenConns = 1000
+KeepAlive    = 3600
+# CacheType                     = "redis"
+CacheMaxSize = 99999999
+CacheTimeout = 86400
+
+[Etl]
+Driver       = "mysql"
+Username     = "root"
+Password     = "example"
+Protocol     = "tcp"
+Address      = "192.168.0.213"
+Port         = "3307"
+Dbname       = "etl_new"
+Params       = "?charset=utf8mb4&sql_notes=false&timeout=90s&collation=utf8mb4_general_ci&parseTime=True&loc=Local"
+MaxIdleConns = 100
+MaxOpenConns = 1000
+KeepAlive    = 3600
+# CacheType                     = "redis"
+CacheMaxSize = 99999999
+CacheTimeout = 86400
+
+[Artery]
+Driver       = "mysql"
+Username     = "root"
+Password     = "example"
+Protocol     = "tcp"
+Address      = "192.168.0.213"
+Port         = "3306"
+Dbname       = "artery"
+Params       = "?charset=utf8mb4&sql_notes=false&timeout=90s&collation=utf8mb4_general_ci&parseTime=True&loc=Local"
+MaxIdleConns = 100
+MaxOpenConns = 1000
+KeepAlive    = 3600
+# CacheType                     = "redis"
+CacheMaxSize = 99999999
+CacheTimeout = 86400
+
+[NebulaGraph]
+Address         = "192.168.0.194"
+Port            = 9669
+Username        = "root"
+Password        = "password"
+TimeOut         = 90
+IdleTime        = 600
+MaxConnPoolSize = 10
+MinConnPoolSize = 1
+KeepAlive       = 360
+
+[Redis]
+IsCluster  = true
+Addresses  = ["192.168.0.146:7004","192.168.0.198:7002","192.168.0.197:7000"]
+Password   = "z8fAK6jBN6cKDkvN"
+Expiration = 3600
+
+[Kafka]
+Addresses = ["192.168.0.105:9092", "192.168.0.140:9092", "192.168.0.141:9092"]
+
+[HDFS]
+Addresses  = ["192.168.0.165:8020","192.168.0.141:8020"]
+UserName   = "hdfs"
+DefaultDir = "/user/hdfs/default"
+
+[GrpcServers.Artery]
+ServerName        = "artery"
+ResolverType      = "consul"
+ResolverAddresses = ["192.168.0.194:8510"]
+
+[GrpcServers.BdDownload]
+ServerName        = "bd_download"
+ResolverType      = "consul"
+ResolverAddresses = ["192.168.0.194:8510"]
+
+[GrpcServers.CertificateNorm]
+ServerName        = "certificate_norm"
+ResolverType      = "consul"
+ResolverAddresses = ["192.168.0.194:8510"]
+
+[GrpcServers.CompanyNorm]
+ServerName        = "company_norm_es"
+ResolverType      = "consul"
+ResolverAddresses = ["192.168.0.194:8510"]
+
+[GrpcServers.CompanyPref]
+ServerName        = "company_pref"
+ResolverType      = "consul"
+ResolverAddresses = ["192.168.0.194:8510"]
+
+[GrpcServers.CompanySeg]
+ServerName        = "company_seg"
+ResolverType      = "consul"
+ResolverAddresses = ["192.168.0.194:8510"]
+
+[GrpcServers.CompanyTypeNorm]
+ServerName        = "company_type"
+ResolverType      = "consul"
+ResolverAddresses = ["192.168.0.194:8510"]
+
+[GrpcServers.DepartmentNorm]
+ServerName        = "department_norm"
+ResolverType      = "consul"
+ResolverAddresses = ["192.168.0.194:8510"]
+
+[GrpcServers.EduNorm]
+ServerName        = "edu_norm"
+ResolverType      = "consul"
+ResolverAddresses = ["192.168.0.194:8510"]
+
+[GrpcServers.ExperienceExtract]
+ServerName        = "experience_extract"
+ResolverType      = "consul"
+ResolverAddresses = ["192.168.0.194:8510"]
+
+[GrpcServers.FunctionNorm]
+ServerName        = "function_norm"
+ResolverType      = "consul"
+ResolverAddresses = ["192.168.0.194:8510"]
+
+[GrpcServers.FunctionPred]
+ServerName        = "function_pred"
+ResolverType      = "consul"
+ResolverAddresses = ["192.168.0.194:8510"]
+
+[GrpcServers.IndustryNorm]
+ServerName        = "industry_norm"
+ResolverType      = "consul"
+ResolverAddresses = ["192.168.0.194:8510"]
+
+[GrpcServers.JdManagementPre]
+ServerName        = "jd_management_pre"
+ResolverType      = "consul"
+ResolverAddresses = ["192.168.0.194:8510"]
+
+[GrpcServers.JdSimilar]
+ServerName        = "jd_similar"
+ResolverType      = "consul"
+ResolverAddresses = ["192.168.0.194:8510"]
+
+[GrpcServers.JdcvTextSimilar]
+ServerName        = "jdcv_text_similar"
+ResolverType      = "consul"
+ResolverAddresses = ["192.168.0.194:8510"]
+
+[GrpcServers.LimitsExtract]
+ServerName        = "limits_extract"
+ResolverType      = "consul"
+ResolverAddresses = ["192.168.0.194:8510"]
+
+[GrpcServers.MajorNorm]
+ServerName        = "major_norm"
+ResolverType      = "consul"
+ResolverAddresses = ["192.168.0.194:8510"]
+
+[GrpcServers.ManagementPre]
+ServerName        = "management_pre"
+ResolverType      = "consul"
+ResolverAddresses = ["192.168.0.194:8510"]
+
+[GrpcServers.PrerequiresExtract]
+ServerName        = "prerequires_extract"
+ResolverType      = "consul"
+ResolverAddresses = ["192.168.0.194:8510"]
+
+[GrpcServers.PositionRankNorm]
+ServerName        = "position_rank_norm"
+ResolverType      = "consul"
+ResolverAddresses = ["192.168.0.194:8510"]
+
+[GrpcServers.SchoolNorm]
+ServerName        = "school_norm"
+ResolverType      = "consul"
+ResolverAddresses = ["192.168.0.194:8510"]
+
+[GrpcServers.SentimentAnalysis]
+ServerName        = "sentiment_analysis"
+ResolverType      = "consul"
+ResolverAddresses = ["192.168.0.194:8510"]
+
+[GrpcServers.SkillExtract]
+ServerName        = "skill_extract"
+ResolverType      = "consul"
+ResolverAddresses = ["192.168.0.194:8510"]
+
+[GrpcServers.EduLanguageExtract]
+ServerName        = "edu_language_extract"
+ResolverType      = "consul"
+ResolverAddresses = ["192.168.0.194:8510"]
+
+[GrpcServers.FunctionExtract]
+ServerName        = "function_extract"
+ResolverType      = "consul"
+ResolverAddresses = ["192.168.0.194:8510"]
+
+[GrpcServers.IndustryProjectExtract]
+ServerName        = "industry_project_extract"
+ResolverType      = "consul"
+ResolverAddresses = ["192.168.0.194:8510"]
+
+[GrpcServers.AbnormalJobs]
+ServerName        = "abnormal_collection"
+ResolverType      = "consul"
+ResolverAddresses = ["192.168.0.194:8510"]
+
+[GrpcServers.SoApollo]
+ServerName        = "so_apollo"
+ResolverType      = "consul"
+ResolverAddresses = ["192.168.0.194:8510"]
+
+[GrpcServers.EsRecallWords]
+ServerName        = "es_recall_words"
+ResolverType      = "consul"
+ResolverAddresses = ["192.168.0.194:8510"]
+
+[GrpcServers.CvSimilarRecall]
+ServerName        = "cv_similar_recall"
+ResolverType      = "consul"
+ResolverAddresses = ["192.168.0.194:8510"]

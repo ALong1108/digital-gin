@@ -1,0 +1,254 @@
+AppName = "digital"
+
+[Server]
+Address           = ":60066"
+Concurrence       = 2000
+ResolverType      = "consul"
+ServerName        = "digital"
+ResolverAddresses = [":8500"]
+Tags              = ["http"]
+
+[Logger]
+LogFile   = "/opt/log/digital.log"
+LogLevel  = "debug"
+IsConsole = false
+LogType   = "roll"
+LogMaxNum = 10
+LogSize   = 1
+LogUnit   = "GB"
+
+[Db]
+Driver       = "mysql"
+Username     = "digital"
+Password     = "7nyuWsdFT2A2M"
+Protocol     = "tcp"
+Address      = "mysql69pro.interior.sk"
+Port         = "3306"
+Dbname       = "digital"
+Params       = "?charset=utf8mb4&sql_notes=false&timeout=90s&collation=utf8mb4_general_ci&parseTime=True&loc=Local"
+MaxIdleConns = 100
+MaxOpenConns = 1000
+KeepAlive    = 3600
+# CacheType                     = "redis"
+CacheMaxSize = 99999999
+CacheTimeout = 86400
+
+[Statistics]
+Driver       = "mysql"
+Username     = "digital"
+Password     = "7nyuWsdFT2A2M"
+Protocol     = "tcp"
+Address      = "mysql69pro.interior.sk"
+Port         = "3306"
+Dbname       = "statistics"
+Params       = "?charset=utf8mb4&sql_notes=false&timeout=90s&collation=utf8mb4_general_ci&parseTime=True&loc=Local"
+MaxIdleConns = 100
+MaxOpenConns = 1000
+KeepAlive    = 3600
+# CacheType                     = "redis"
+CacheMaxSize = 99999999
+CacheTimeout = 86400
+
+[Etl]
+Driver       = "mysql"
+Username     = "digital"
+Password     = "7nyuWsdFT2A2M"
+Protocol     = "tcp"
+Address      = "mysql58pro.interior.sk"
+Port         = "3306"
+Dbname       = "etl_new"
+Params       = "?charset=utf8mb4&sql_notes=false&timeout=90s&collation=utf8mb4_general_ci&parseTime=True&loc=Local"
+MaxIdleConns = 100
+MaxOpenConns = 1000
+KeepAlive    = 3600
+# CacheType                     = "redis"
+CacheMaxSize = 99999999
+CacheTimeout = 86400
+
+[Artery]
+Driver       = "mysql"
+Username     = "digital"
+Password     = "7nyuWsdFT2A2M"
+Protocol     = "tcp"
+Address      = "mysql70pro.interior.sk"
+Port         = "3306"
+Dbname       = "artery"
+Params       = "?charset=utf8mb4&sql_notes=false&timeout=90s&collation=utf8mb4_general_ci&parseTime=True&loc=Local"
+MaxIdleConns = 100
+MaxOpenConns = 1000
+KeepAlive    = 3600
+# CacheType                     = "redis"
+CacheMaxSize = 99999999
+CacheTimeout = 86400
+
+[Redis]
+IsCluster  = true
+Addresses  = ["redis5pro.interior.sk:7000","redis4pro.interior.sk:7002","redis91pro.interior.sk:7004"]
+Password   = "z8fAK6jBN6cKDkvN"
+Expiration = 3600
+
+[Kafka]
+Addresses = ["cdh001pro.interior.sk:9092", "cdh002pro.interior.sk:9092", "cdh003pro.interior.sk:9092", "cdh004pro.interior.sk:9092", "cdh005pro.interior.sk:9092", "cdh006pro.interior.sk:9092"]
+
+[HDFS]
+Addresses  = ["cdh005pro.interior.sk:8020","cdh006pro.interior.sk:8020"]
+UserName   = "hdfs"
+DefaultDir = "/user/hdfs/default"
+
+[Prometheus]
+IsEnable = true
+
+[GrpcServers.Artery]
+ServerName        = "artery"
+ResolverType      = "consul"
+ResolverAddresses = [":8500"]
+
+[GrpcServers.BdDownload]
+ServerName        = "bd_download"
+ResolverType      = "consul"
+ResolverAddresses = [":8500"]
+
+[GrpcServers.CertificateNorm]
+ServerName        = "certificate_norm"
+ResolverType      = "consul"
+ResolverAddresses = [":8500"]
+
+[GrpcServers.CompanyNorm]
+ServerName        = "company_norm_es"
+ResolverType      = "consul"
+ResolverAddresses = [":8500"]
+
+[GrpcServers.CompanyPref]
+ServerName        = "company_pref"
+ResolverType      = "consul"
+ResolverAddresses = [":8500"]
+
+[GrpcServers.CompanySeg]
+ServerName        = "company_seg"
+ResolverType      = "consul"
+ResolverAddresses = [":8500"]
+
+[GrpcServers.CompanyTypeNorm]
+ServerName        = "company_type"
+ResolverType      = "consul"
+ResolverAddresses = [":8500"]
+
+[GrpcServers.DepartmentNorm]
+ServerName        = "department_norm"
+ResolverType      = "consul"
+ResolverAddresses = [":8500"]
+
+[GrpcServers.EduNorm]
+ServerName        = "edu_norm"
+ResolverType      = "consul"
+ResolverAddresses = [":8500"]
+
+[GrpcServers.ExperienceExtract]
+ServerName        = "experience_extract"
+ResolverType      = "consul"
+ResolverAddresses = [":8500"]
+
+[GrpcServers.FunctionNorm]
+ServerName        = "function_norm"
+ResolverType      = "consul"
+ResolverAddresses = [":8500"]
+
+[GrpcServers.FunctionPred]
+ServerName        = "function_pred"
+ResolverType      = "consul"
+ResolverAddresses = [":8500"]
+
+[GrpcServers.IndustryNorm]
+ServerName        = "industry_norm"
+ResolverType      = "consul"
+ResolverAddresses = [":8500"]
+
+[GrpcServers.JdManagementPre]
+ServerName        = "jd_management_pre"
+ResolverType      = "consul"
+ResolverAddresses = [":8500"]
+
+[GrpcServers.JdSimilar]
+ServerName        = "jd_similar"
+ResolverType      = "consul"
+ResolverAddresses = [":8500"]
+
+[GrpcServers.JdcvTextSimilar]
+ServerName        = "jdcv_text_similar"
+ResolverType      = "consul"
+ResolverAddresses = [":8500"]
+
+[GrpcServers.LimitsExtract]
+ServerName        = "limits_extract"
+ResolverType      = "consul"
+ResolverAddresses = [":8500"]
+
+[GrpcServers.MajorNorm]
+ServerName        = "major_norm"
+ResolverType      = "consul"
+ResolverAddresses = [":8500"]
+
+[GrpcServers.ManagementPre]
+ServerName        = "management_pre"
+ResolverType      = "consul"
+ResolverAddresses = [":8500"]
+
+[GrpcServers.PrerequiresExtract]
+ServerName        = "prerequires_extract"
+ResolverType      = "consul"
+ResolverAddresses = [":8500"]
+
+[GrpcServers.PositionRankNorm]
+ServerName        = "position_rank_norm"
+ResolverType      = "consul"
+ResolverAddresses = [":8500"]
+
+[GrpcServers.SchoolNorm]
+ServerName        = "school_norm"
+ResolverType      = "consul"
+ResolverAddresses = [":8500"]
+
+[GrpcServers.SentimentAnalysis]
+ServerName        = "sentiment_analysis"
+ResolverType      = "consul"
+ResolverAddresses = [":8500"]
+
+[GrpcServers.SkillExtract]
+ServerName        = "skill_extract"
+ResolverType      = "consul"
+ResolverAddresses = [":8500"]
+
+[GrpcServers.EduLanguageExtract]
+ServerName        = "edu_language_extract"
+ResolverType      = "consul"
+ResolverAddresses = [":8500"]
+
+[GrpcServers.FunctionExtract]
+ServerName        = "function_extract"
+ResolverType      = "consul"
+ResolverAddresses = [":8500"]
+
+[GrpcServers.IndustryProjectExtract]
+ServerName        = "industry_project_extract"
+ResolverType      = "consul"
+ResolverAddresses = [":8500"]
+
+[GrpcServers.AbnormalJobs]
+ServerName        = "abnormal_collection"
+ResolverType      = "consul"
+ResolverAddresses = [":8500"]
+
+[GrpcServers.SoApollo]
+ServerName        = "so_apollo"
+ResolverType      = "consul"
+ResolverAddresses = [":8500"]
+
+[GrpcServers.EsRecallWords]
+ServerName        = "es_recall_words"
+ResolverType      = "consul"
+ResolverAddresses = [":8500"]
+
+[GrpcServers.CvSimilarRecall]
+ServerName        = "cv_similar_recall"
+ResolverType      = "consul"
+ResolverAddresses = [":8500"]

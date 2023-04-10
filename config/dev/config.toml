@@ -1,0 +1,249 @@
+AppName = "digital"
+
+[HTTP]
+Address           = ":60066"
+Concurrence       = 2000
+ResolverType      = "consul"
+ServerName        = "digital"
+ResolverAddresses = ["consul:8500"]
+Tags              = ["http"]
+
+[Logger]
+TypeID          = 2
+Level           = "debug"
+FilePath        = "/opt/log/digital.log"
+MaxFileCount    = 10
+FileSize        = 1
+FileUnit        = 10
+
+[DB.Digital]
+Driver       = "mysql"
+Username     = "root"
+Password     = "example"
+Protocol     = "tcp"
+Address      = "192.168.0.213"
+Port         = 3307
+Dbname       = "digital"
+Params       = "charset=utf8mb4&sql_notes=false&timeout=90s&collation=utf8mb4_general_ci&parseTime=True&loc=Local"
+MaxOpenConns = 1000
+MaxIdleConns = 100
+KeepAlive    = 3600
+
+[DB.Statistics]
+Driver       = "mysql"
+Username     = "root"
+Password     = "example"
+Protocol     = "tcp"
+Address      = "192.168.0.213"
+Port         = 3307
+Dbname       = "statistics"
+Params       = "charset=utf8mb4&sql_notes=false&timeout=90s&collation=utf8mb4_general_ci&parseTime=True&loc=Local"
+MaxIdleConns = 100
+MaxOpenConns = 1000
+KeepAlive    = 3600
+
+[DB.Etl]
+Driver       = "mysql"
+Username     = "root"
+Password     = "example"
+Protocol     = "tcp"
+Address      = "192.168.0.213"
+Port         = 3307
+Dbname       = "etl_new"
+Params       = "charset=utf8mb4&sql_notes=false&timeout=90s&collation=utf8mb4_general_ci&parseTime=True&loc=Local"
+MaxIdleConns = 100
+MaxOpenConns = 1000
+KeepAlive    = 3600
+
+[DB.Artery]
+Driver       = "mysql"
+Username     = "root"
+Password     = "example"
+Protocol     = "tcp"
+Address      = "192.168.0.213"
+Port         = 3307
+Dbname       = "artery"
+Params       = "charset=utf8mb4&sql_notes=false&timeout=90s&collation=utf8mb4_general_ci&parseTime=True&loc=Local"
+MaxIdleConns = 100
+MaxOpenConns = 1000
+KeepAlive    = 3600
+
+[NebulaGraph]
+Address         = "192.168.0.198"
+Port            = 9669
+Username        = "root"
+Password        = "password"
+TimeOut         = 90
+IdleTime        = 600
+MaxConnPoolSize = 10
+MinConnPoolSize = 1
+KeepAlive       = 360
+
+[Redis]
+IsCluster  = true
+Addresses  = ["192.168.0.146:7004","192.168.0.198:7002","192.168.0.197:7000"]
+Password   = "z8fAK6jBN6cKDkvN"
+Expiration = 3600
+
+[Kafka]
+Addresses = ["192.168.0.194:9092", "192.168.0.194:9093", "192.168.0.194:9094"]
+
+[HDFS]
+Addresses  = ["192.168.0.165:8020","192.168.0.141:8020"]
+UserName   = "hdfs"
+DefaultDir = "/user/hdfs/default"
+
+[GrpcClients.Artery]
+ServerName        = "artery"
+ResolverType      = "consul"
+ResolverAddresses = ["consul:8500"]
+
+[GrpcClients.BdDownload]
+ServerName        = "bd_download"
+ResolverType      = "consul"
+ResolverAddresses = ["consul:8500"]
+
+[GrpcClients.CertificateNorm]
+ServerName        = "certificate_norm"
+ResolverType      = "consul"
+ResolverAddresses = ["consul:8500"]
+
+[GrpcClients.CompanyNorm]
+ServerName        = "company_norm_es"
+ResolverType      = "consul"
+ResolverAddresses = ["consul:8500"]
+
+[GrpcClients.CompanyPref]
+ServerName        = "company_pref"
+ResolverType      = "consul"
+ResolverAddresses = ["consul:8500"]
+
+[GrpcClients.CompanySeg]
+ServerName        = "company_seg"
+ResolverType      = "consul"
+ResolverAddresses = ["consul:8500"]
+
+[GrpcClients.CompanyTypeNorm]
+ServerName        = "company_type"
+ResolverType      = "consul"
+ResolverAddresses = ["consul:8500"]
+
+[GrpcClients.DepartmentNorm]
+ServerName        = "department_norm"
+ResolverType      = "consul"
+ResolverAddresses = ["consul:8500"]
+
+[GrpcClients.EduNorm]
+ServerName        = "edu_norm"
+ResolverType      = "consul"
+ResolverAddresses = ["consul:8500"]
+
+[GrpcClients.ExperienceExtract]
+ServerName        = "experience_extract"
+ResolverType      = "consul"
+ResolverAddresses = ["consul:8500"]
+
+[GrpcClients.FunctionNorm]
+ServerName        = "function_norm"
+ResolverType      = "consul"
+ResolverAddresses = ["consul:8500"]
+
+[GrpcClients.FunctionPred]
+ServerName        = "function_pred"
+ResolverType      = "consul"
+ResolverAddresses = ["consul:8500"]
+
+[GrpcClients.IndustryNorm]
+ServerName        = "industry_norm"
+ResolverType      = "consul"
+ResolverAddresses = ["consul:8500"]
+
+[GrpcClients.JdManagementPre]
+ServerName        = "jd_management_pre"
+ResolverType      = "consul"
+ResolverAddresses = ["consul:8500"]
+
+[GrpcClients.JdSimilar]
+ServerName        = "jd_similar"
+ResolverType      = "consul"
+ResolverAddresses = ["consul:8500"]
+
+[GrpcClients.JdcvTextSimilar]
+ServerName        = "jdcv_text_similar"
+ResolverType      = "consul"
+ResolverAddresses = ["consul:8500"]
+
+[GrpcClients.LimitsExtract]
+ServerName        = "limits_extract"
+ResolverType      = "consul"
+ResolverAddresses = ["consul:8500"]
+
+[GrpcClients.MajorNorm]
+ServerName        = "major_norm"
+ResolverType      = "consul"
+ResolverAddresses = ["consul:8500"]
+
+[GrpcClients.ManagementPre]
+ServerName        = "management_pre"
+ResolverType      = "consul"
+ResolverAddresses = ["consul:8500"]
+
+[GrpcClients.PrerequiresExtract]
+ServerName        = "prerequires_extract"
+ResolverType      = "consul"
+ResolverAddresses = ["consul:8500"]
+
+[GrpcClients.PositionRankNorm]
+ServerName        = "position_rank_norm"
+ResolverType      = "consul"
+ResolverAddresses = ["consul:8500"]
+
+[GrpcClients.SchoolNorm]
+ServerName        = "school_norm"
+ResolverType      = "consul"
+ResolverAddresses = ["consul:8500"]
+
+[GrpcClients.SentimentAnalysis]
+ServerName        = "sentiment_analysis"
+ResolverType      = "consul"
+ResolverAddresses = ["consul:8500"]
+
+[GrpcClients.SkillExtract]
+ServerName        = "skill_extract"
+ResolverType      = "consul"
+ResolverAddresses = ["consul:8500"]
+
+[GrpcClients.EduLanguageExtract]
+ServerName        = "edu_language_extract"
+ResolverType      = "consul"
+ResolverAddresses = ["consul:8500"]
+
+[GrpcClients.FunctionExtract]
+ServerName        = "function_extract"
+ResolverType      = "consul"
+ResolverAddresses = ["consul:8500"]
+
+[GrpcClients.IndustryProjectExtract]
+ServerName        = "industry_project_extract"
+ResolverType      = "consul"
+ResolverAddresses = ["consul:8500"]
+
+[GrpcClients.AbnormalJobs]
+ServerName        = "abnormal_collection"
+ResolverType      = "consul"
+ResolverAddresses = ["consul:8500"]
+
+[GrpcClients.SoApollo]
+ServerName        = "so_apollo"
+ResolverType      = "consul"
+ResolverAddresses = ["consul:8500"]
+
+[GrpcClients.EsRecallWords]
+ServerName        = "es_recall_words"
+ResolverType      = "consul"
+ResolverAddresses = ["consul:8500"]
+
+[GrpcClients.CvSimilarRecall]
+ServerName        = "cv_similar_recall"
+ResolverType      = "consul"
+ResolverAddresses = ["consul:8500"]
