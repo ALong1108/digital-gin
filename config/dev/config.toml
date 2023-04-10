@@ -10,7 +10,7 @@ Tags              = ["http"]
 
 [Logger]
 TypeID          = 2
-Level           = "debug"
+Level           = 0
 FilePath        = "/opt/log/digital.log"
 MaxFileCount    = 10
 FileSize        = 1
