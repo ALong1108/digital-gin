@@ -8,5 +8,5 @@ import (
 
 func Index(ctx *gin.Context) {
 	time.Sleep(time.Second)
-	ctx.String(http.StatusOK, "Welcome Gin Server")
+	ctx.String(http.StatusOK, "Welcome Gin Register")
 }

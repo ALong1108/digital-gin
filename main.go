@@ -30,9 +30,12 @@ func main() {
 	router.Groups(r)
 
 	// http server
+	var httpConfig = configs.GetHTTPServer()
 	srv := &http.Server{
-		Addr:    ":8080",
-		Handler: r,
+		Addr:         httpConfig.Address,
+		Handler:      r,
+		ReadTimeout:  httpConfig.ReadTimeout * time.Millisecond,
+		WriteTimeout: httpConfig.WriteTimeout * time.Millisecond,
 	}
 	go func() {
 		if err := srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
@@ -48,9 +51,9 @@ func main() {
 	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
 	defer cancel()
 	if err = srv.Shutdown(ctx); err != nil {
-		logger.Fatal("Server forced to shutdown: ", err)
+		logger.Fatal("Register forced to shutdown: ", err)
 	}
 	db.Close()
 
-	logger.Info("Server exiting")
+	logger.Info("Register exiting")
 }

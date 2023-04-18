@@ -1,44 +1,36 @@
 package configs
 
-import "time"
+import (
+	"time"
+)
 
-// Server ..
-type Server struct {
-	Address string
+type (
+	HTTPServer struct {
+		Address      string
+		ReadTimeout  time.Duration // time.Millisecond
+		WriteTimeout time.Duration // time.Millisecond
 
-	// 证书
-	CertFile string
-	KeyFile  string
-	Phrase   string
+		Register `mapstructure:",squash"`
+	}
 
-	//服务注册配置
-	//服务注册类型，目前可选static、consul，默认是static
-	ResolverType string
-	//服务注册的地址，如consul、etcd地址
-	ResolverAddresses []string
-	//服务名，必须符合证书的域名规则
-	ServerName string
-	//隔多久检查一次
-	UpdateInterval int64
-	//指定注册的网卡地址，或者在上方的Address里指定ip
-	Interface string
-	Tags      []string
-}
+	GrpcServer struct {
+		Address        string
+		MaxRecvMsgSize int
+		MaxSendMsgSize int
 
-// HTTPServer ..
-type HTTPServer struct {
-	Server `mapstructure:",squash"`
-	//并发数量限制
-	Concurrence uint
+		Register `mapstructure:",squash"`
+	}
 
-	ReadTimeout  time.Duration
-	WriteTimeout time.Duration
-}
+	// Register 服务注册
+	Register struct {
+		Type           string // static,consul
+		Addresses      []string
+		ServerName     string
+		UpdateInterval int8
+		Tags           []string
+	}
+)
 
-// GrpcServer ..
-type GrpcServer struct {
-	Server `mapstructure:",squash"`
-
-	MaxRecvMsgSize int
-	MaxSendMsgSize int
+func GetHTTPServer() HTTPServer {
+	return myConfig.HTTP
 }

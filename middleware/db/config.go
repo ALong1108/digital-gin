@@ -15,8 +15,8 @@ type Config struct {
 	// connections
 	MaxOpenConns    int
 	MaxIdleConns    int
-	ConnMaxLifetime time.Duration
-	ConnMaxIdleTime time.Duration
+	ConnMaxLifetime time.Duration // time.Millisecond
+	ConnMaxIdleTime time.Duration // time.Millisecond
 }
 
 // StdConfig ..
@@ -44,7 +44,7 @@ func (m *Config) mustConnect() *sqlx.DB {
 	var db = sqlx.MustConnect(strings.ToLower(m.Driver), m.dsn())
 	db.SetMaxOpenConns(m.MaxOpenConns)
 	db.SetMaxIdleConns(m.MaxIdleConns)
-	db.SetConnMaxLifetime(m.ConnMaxLifetime)
-	db.SetConnMaxIdleTime(m.ConnMaxIdleTime)
+	db.SetConnMaxLifetime(m.ConnMaxLifetime * time.Millisecond)
+	db.SetConnMaxIdleTime(m.ConnMaxIdleTime * time.Millisecond)
 	return db
 }
